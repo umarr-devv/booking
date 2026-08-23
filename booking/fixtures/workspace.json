@@ -1,0 +1,33 @@
+[
+ {
+  "app": "booking",
+  "charts": [],
+  "content": "[]",
+  "custom_blocks": [],
+  "docstatus": 0,
+  "doctype": "Workspace",
+  "external_link": null,
+  "for_user": null,
+  "hide_custom": 0,
+  "icon": "notebook-text",
+  "indicator_color": "green",
+  "is_hidden": 0,
+  "label": "Booking",
+  "link_to": null,
+  "link_type": "DocType",
+  "links": [],
+  "modified": "2026-08-23 20:31:07.795311",
+  "module": "Booking",
+  "name": "Booking",
+  "number_cards": [],
+  "parent_page": null,
+  "public": 1,
+  "quick_lists": [],
+  "restrict_to_domain": null,
+  "roles": [],
+  "sequence_id": 0.0,
+  "shortcuts": [],
+  "title": "Booking",
+  "type": "Workspace"
+ }
+]

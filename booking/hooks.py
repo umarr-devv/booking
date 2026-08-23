@@ -5,6 +5,29 @@ app_description = "App for booking"
 app_email = "umarr.devv@outlook.com"
 app_license = "mit"
 
+fixtures = [
+    {
+        "dt": "Role", 
+        "filters": [["name", "=", "Booking Manager"]]
+    },
+    {
+        "dt": "Workspace", 
+        "filters": [["name", "=", "Booking"]]
+    },
+    {
+        "dt": "Desktop Icon", 
+        "filters": [["name", "=", "Booking"]]
+    },
+    {
+        "dt": "Workspace Sidebar",
+        "filters": [["title", "=", "Booking"]]
+    },
+    {
+        "dt": "File",
+        "filters": [["file_name", "=", "booking.png"]]
+    }
+]
+
 # Apps
 # ------------------
 

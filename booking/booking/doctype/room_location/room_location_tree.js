@@ -1,0 +1,5 @@
+// Copyright (c) 2026, umarr and contributors
+// For license information, please see license.txt
+
+// frappe.treeview_settings["Room Location"] = {
+// };
