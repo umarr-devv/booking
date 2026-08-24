@@ -21,10 +21,6 @@ fixtures = [
     {
         "dt": "Workspace Sidebar",
         "filters": [["title", "=", "Booking"]]
-    },
-    {
-        "dt": "File",
-        "filters": [["file_name", "=", "booking.png"]]
     }
 ]
 
