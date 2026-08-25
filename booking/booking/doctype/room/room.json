@@ -2,25 +2,64 @@
  "actions": [],
  "allow_bulk_edit": 1,
  "allow_rename": 1,
+ "autoname": "format:{room_type}-{room_number}",
  "creation": "2026-08-23 20:41:52.902717",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "section_break_itxs"
+  "room_number",
+  "enabled",
+  "column_break_yyoc",
+  "room_type",
+  "info_section",
+  "room_location"
  ],
  "fields": [
   {
-   "fieldname": "section_break_itxs",
-   "fieldtype": "Section Break"
+   "fieldname": "room_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Room Number",
+   "reqd": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "enabled"
+  },
+  {
+   "fieldname": "column_break_yyoc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "room_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Room Type",
+   "options": "Room Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "info_section",
+   "fieldtype": "Section Break",
+   "label": "Info"
+  },
+  {
+   "fieldname": "room_location",
+   "fieldtype": "Link",
+   "label": "Room Location",
+   "options": "Room Location"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-08-23 20:41:52.902717",
+ "modified": "2026-08-25 11:59:57.792452",
  "modified_by": "Administrator",
  "module": "Booking",
  "name": "Room",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {

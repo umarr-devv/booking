@@ -144,11 +144,11 @@
     "label": "Room Location",
     "link_to": "Room Location",
     "link_type": "DocType",
-    "navigate_to_tab": null,
+    "navigate_to_tab": "",
     "route_options": null,
     "show_arrow": 0,
     "type": "Link",
-    "url": null
+    "url": "/desk/room-location/view/tree"
    },
    {
     "child": 0,
@@ -183,7 +183,7 @@
     "url": null
    }
   ],
-  "modified": "2026-08-23 20:45:47.398434",
+  "modified": "2026-08-25 09:50:04.072982",
   "module": "Booking",
   "module_onboarding": null,
   "name": "Booking",

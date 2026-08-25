@@ -6,19 +6,61 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "section_break_szw4"
+  "accommodation_item",
+  "section_break_zimq",
+  "default_warehouse",
+  "check_defaults_section",
+  "default_checkin_time",
+  "column_break_lkro",
+  "default_checkout_time"
  ],
  "fields": [
   {
-   "fieldname": "section_break_szw4",
+   "fieldname": "accommodation_item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Accommodation Item",
+   "link_filters": "[\r\n    [\r\n        \"Item\",\r\n        \"is_stock_item\",\r\n        \"=\",\r\n        \"0\"\r\n    ],\r\n    [\r\n        \"Item\",\r\n        \"disabled\",\r\n        \"=\",\r\n        \"0\"\r\n    ]\r\n\r\n]",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "check_defaults_section",
+   "fieldtype": "Section Break",
+   "label": "Check Defaults"
+  },
+  {
+   "fieldname": "default_checkin_time",
+   "fieldtype": "Time",
+   "label": "Default Check In Time"
+  },
+  {
+   "fieldname": "column_break_lkro",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_checkout_time",
+   "fieldtype": "Time",
+   "label": "Default Check Out Time"
+  },
+  {
+   "fieldname": "section_break_zimq",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "default_warehouse",
+   "fieldtype": "Link",
+   "label": "Default Warehouse",
+   "link_filters": "[\r\n    [\r\n        \"Account\",\r\n        \"is_group\",\r\n        \"=\",\r\n        \"0\"\r\n    ]\r\n]",
+   "options": "Warehouse",
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-08-23 20:40:24.799776",
+ "modified": "2026-08-25 12:30:14.862525",
  "modified_by": "Administrator",
  "module": "Booking",
  "name": "Booking Settings",

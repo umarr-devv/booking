@@ -1,0 +1,134 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow",
+  "document_type": "Room Booking",
+  "enable_action_confirmation": 1,
+  "is_active": 1,
+  "modified": "2026-08-25 13:47:06.907891",
+  "name": "Room Booking Workflow",
+  "override_status": 0,
+  "send_email_alert": 0,
+  "states": [
+   {
+    "allow_edit": "Booking Manager",
+    "avoid_status_override": 0,
+    "doc_status": "0",
+    "evaluate_as_expression": 0,
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "send_email": 1,
+    "state": "Booking",
+    "update_field": "status",
+    "update_value": "Booking",
+    "workflow_builder_id": null
+   },
+   {
+    "allow_edit": "Booking Manager",
+    "avoid_status_override": 0,
+    "doc_status": "1",
+    "evaluate_as_expression": 0,
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "send_email": 1,
+    "state": "Check In",
+    "update_field": "status",
+    "update_value": "Check In",
+    "workflow_builder_id": null
+   },
+   {
+    "allow_edit": "Booking Manager",
+    "avoid_status_override": 0,
+    "doc_status": "1",
+    "evaluate_as_expression": 0,
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "send_email": 1,
+    "state": "Check Out",
+    "update_field": "status",
+    "update_value": "Check Out",
+    "workflow_builder_id": null
+   },
+   {
+    "allow_edit": "Booking Manager",
+    "avoid_status_override": 0,
+    "doc_status": "1",
+    "evaluate_as_expression": 0,
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "send_email": 1,
+    "state": "Completed",
+    "update_field": "status",
+    "update_value": "Completed",
+    "workflow_builder_id": null
+   },
+   {
+    "allow_edit": "Booking Manager",
+    "avoid_status_override": 0,
+    "doc_status": "2",
+    "evaluate_as_expression": 0,
+    "is_optional_state": 0,
+    "message": null,
+    "next_action_email_template": null,
+    "send_email": 1,
+    "state": "Cancelled",
+    "update_field": "status",
+    "update_value": "Cancelled",
+    "workflow_builder_id": null
+   }
+  ],
+  "transitions": [
+   {
+    "action": "Check In",
+    "allow_self_approval": 1,
+    "allowed": "Booking Manager",
+    "condition": null,
+    "next_state": "Check In",
+    "send_email_to_creator": 0,
+    "state": "Booking",
+    "transition_tasks": null,
+    "workflow_builder_id": null
+   },
+   {
+    "action": "Cancel",
+    "allow_self_approval": 1,
+    "allowed": "Booking Manager",
+    "condition": null,
+    "next_state": "Cancelled",
+    "send_email_to_creator": 0,
+    "state": "Check In",
+    "transition_tasks": null,
+    "workflow_builder_id": null
+   },
+   {
+    "action": "Check Out",
+    "allow_self_approval": 1,
+    "allowed": "Booking Manager",
+    "condition": null,
+    "next_state": "Check Out",
+    "send_email_to_creator": 0,
+    "state": "Check In",
+    "transition_tasks": null,
+    "workflow_builder_id": null
+   },
+   {
+    "action": "Complete",
+    "allow_self_approval": 1,
+    "allowed": "Booking Manager",
+    "condition": null,
+    "next_state": "Completed",
+    "send_email_to_creator": 0,
+    "state": "Check Out",
+    "transition_tasks": null,
+    "workflow_builder_id": null
+   }
+  ],
+  "workflow_data": null,
+  "workflow_name": "Room Booking Workflow",
+  "workflow_state_field": "status"
+ }
+]

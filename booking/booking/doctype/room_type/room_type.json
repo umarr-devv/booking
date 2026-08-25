@@ -2,25 +2,69 @@
  "actions": [],
  "allow_bulk_edit": 1,
  "allow_rename": 1,
+ "autoname": "field:room_type_name",
  "creation": "2026-08-23 20:40:47.094962",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "section_break_g1p4"
+  "room_type_name",
+  "column_break_hzaa",
+  "enabled",
+  "info_section",
+  "max_occupancy",
+  "image",
+  "description"
  ],
  "fields": [
   {
-   "fieldname": "section_break_g1p4",
-   "fieldtype": "Section Break"
+   "fieldname": "room_type_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Room Type Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "column_break_hzaa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "enabled"
+  },
+  {
+   "fieldname": "info_section",
+   "fieldtype": "Section Break",
+   "label": "Info"
+  },
+  {
+   "fieldname": "max_occupancy",
+   "fieldtype": "Int",
+   "label": "Max Occupancy"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Image"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
   }
  ],
  "grid_page_length": 50,
+ "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-08-23 20:40:47.094962",
+ "modified": "2026-08-25 09:56:55.310556",
  "modified_by": "Administrator",
  "module": "Booking",
  "name": "Room Type",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {

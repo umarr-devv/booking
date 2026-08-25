@@ -1,0 +1,24 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Room Booking",
+  "enabled": 1,
+  "modified": "2026-08-25 11:16:53.406140",
+  "module": "Booking",
+  "name": "Rate Plan Filter",
+  "script": "frappe.ui.form.on('Room Booking', {\r\n    room_type: function(frm) {\r\n        frm.set_query('room_rate_plan', function() {\r\n            return { filters: { room_type: frm.doc.room_type } };\r\n        });\r\n    }\r\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Room Booking",
+  "enabled": 1,
+  "modified": "2026-08-25 14:20:46.915461",
+  "module": "Booking",
+  "name": "Room Booking Calculate Setvice and Item",
+  "script": "function update_amount(cdt, cdn) {\r\n    let row = locals[cdt][cdn];\r\n    frappe.model.set_value(cdt, cdn, 'amount', (row.rate || 0) * (row.qty || 0));\r\n}\r\nfunction calculate_accommodation(frm) {\r\n    if (!frm.doc.room_rate_plan || !frm.doc.calculation_type) {\r\n        frm.accommodation_rate = 0;\r\n        calculate_total(frm);\r\n        return;\r\n    }\r\n    frappe.db.get_doc('Room Rate Plan', frm.doc.room_rate_plan).then(rate_plan => {\r\n        frm.accommodation_rate = frm.doc.calculation_type === 'Hourly'\r\n            ? (rate_plan.hourly_rate || 0)\r\n            : (rate_plan.daily_rate || 0);\r\n        calculate_total(frm);\r\n    });\r\n}\r\n\r\nfunction calculate_total(frm) {\r\n    let qty = 0;\r\n    if (frm.doc.check_in && frm.doc.check_out && frm.doc.calculation_type) {\r\n        let start = moment(frm.doc.check_in);\r\n        let end = moment(frm.doc.check_out);\r\n        if (frm.doc.calculation_type === 'Hourly') {\r\n            qty = Math.ceil(end.diff(start, 'hours', true));\r\n        } else {\r\n            qty = Math.max(end.diff(start, 'days'), 1);\r\n        }\r\n    }\r\n    let accommodation_total = (frm.accommodation_rate || 0) * qty;\r\n    let services_total = (frm.doc.services || []).reduce((s, r) => s + (r.amount || 0), 0);\r\n    let items_total = (frm.doc.items || []).reduce((s, r) => s + (r.amount || 0), 0);\r\n\r\n    frm.set_value('total_amount', accommodation_total + services_total + items_total);\r\n}\r\n\r\nfrappe.ui.form.on('Room Booking', {\r\n    onload: function(frm) {\r\n        frappe.db.get_single_value('Selling Settings', 'selling_price_list').then(pl => {\r\n            frm.default_price_list = pl;\r\n        });\r\n    },\r\n    room_rate_plan: function(frm) { calculate_accommodation(frm); },\r\n    calculation_type: function(frm) { calculate_accommodation(frm); },\r\n    check_in: function(frm) { calculate_total(frm); },\r\n    check_out: function(frm) { calculate_total(frm); }\r\n});\r\n\r\nfunction update_rate(frm, cdt, cdn, table_field) {\r\n    let row = locals[cdt][cdn];\r\n    let item_code = row.item || row.service;\r\n    if (!item_code || !row.price_list) return;\r\n\r\n    frappe.call({\r\n        method: 'frappe.client.get_list',\r\n        args: {\r\n            doctype: 'Item Price',\r\n            filters: { item_code: item_code, price_list: row.price_list },\r\n            fields: ['price_list_rate'],\r\n            limit_page_length: 1\r\n        },\r\n        callback: function(r) {\r\n            let rate = (r.message && r.message[0]) ? r.message[0].price_list_rate : 0;\r\n            frappe.model.set_value(cdt, cdn, 'rate', rate);\r\n            update_amount(cdt, cdn);\r\n            frm.refresh_field(table_field);\r\n            calculate_total(frm);\r\n        }\r\n    });\r\n}\r\n\r\nfrappe.ui.form.on('Room Booking Item', {\r\n    items_add: function(frm, cdt, cdn) {\r\n        frappe.model.set_value(cdt, cdn, 'price_list', frm.default_price_list);\r\n    },\r\n    items_remove: function(frm) { calculate_total(frm); },\r\n    item: function(frm, cdt, cdn) { update_rate(frm, cdt, cdn, 'items'); },\r\n    price_list: function(frm, cdt, cdn) { update_rate(frm, cdt, cdn, 'items'); },\r\n    qty: function(frm, cdt, cdn) { update_amount(cdt, cdn); calculate_total(frm); }\r\n});\r\n\r\nfrappe.ui.form.on('Room Booking Service', {\r\n    services_add: function(frm, cdt, cdn) {\r\n        frappe.model.set_value(cdt, cdn, 'price_list', frm.default_price_list);\r\n    },\r\n    services_remove: function(frm) { calculate_total(frm); },\r\n    service: function(frm, cdt, cdn) { update_rate(frm, cdt, cdn, 'services'); },\r\n    price_list: function(frm, cdt, cdn) { update_rate(frm, cdt, cdn, 'services'); },\r\n    qty: function(frm, cdt, cdn) { update_amount(cdt, cdn); calculate_total(frm); }\r\n});",
+  "view": "Form"
+ }
+]

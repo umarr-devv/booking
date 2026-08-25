@@ -21,7 +21,10 @@ fixtures = [
     {
         "dt": "Workspace Sidebar",
         "filters": [["title", "=", "Booking"]]
-    }
+    },
+    {"dt": "Client Script", "filters": [["module", "=", "Booking"]]},
+    {"dt": "Server Script", "filters": [["module", "=", "Booking"]]},
+    {"dt": "Workflow", "filters": [["document_type", "=", "Room Booking"]]},
 ]
 
 # Apps

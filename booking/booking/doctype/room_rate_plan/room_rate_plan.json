@@ -2,25 +2,87 @@
  "actions": [],
  "allow_bulk_edit": 1,
  "allow_rename": 1,
+ "autoname": "format:{room_type}-{room_rate_plan_name}",
  "creation": "2026-08-23 20:41:41.477763",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "section_break_ph3z"
+  "room_rate_plan_name",
+  "enabled",
+  "column_break_jpnb",
+  "room_type",
+  "pricing_section",
+  "hourly_rate",
+  "column_break_oicj",
+  "daily_rate",
+  "info_section",
+  "description"
  ],
  "fields": [
   {
-   "fieldname": "section_break_ph3z",
-   "fieldtype": "Section Break"
+   "fieldname": "room_rate_plan_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Rate Plane Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "enabled"
+  },
+  {
+   "fieldname": "column_break_jpnb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "room_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Room Type",
+   "options": "Room Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Pricing"
+  },
+  {
+   "fieldname": "hourly_rate",
+   "fieldtype": "Currency",
+   "label": "Hourly Rate"
+  },
+  {
+   "fieldname": "column_break_oicj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "daily_rate",
+   "fieldtype": "Currency",
+   "label": "Daily rate"
+  },
+  {
+   "fieldname": "info_section",
+   "fieldtype": "Section Break",
+   "label": "Info"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-08-23 20:41:41.477763",
+ "modified": "2026-08-25 11:58:23.836077",
  "modified_by": "Administrator",
  "module": "Booking",
  "name": "Room Rate Plan",
+ "naming_rule": "Expression (old style)",
  "owner": "Administrator",
  "permissions": [
   {

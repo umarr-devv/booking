@@ -2,16 +2,21 @@
  "actions": [],
  "allow_bulk_edit": 1,
  "allow_rename": 1,
+ "autoname": "field:room_location_name",
  "creation": "2026-08-23 20:46:39.172411",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "room_location_name",
   "section_break_wmg4",
   "lft",
   "rgt",
   "is_group",
   "old_parent",
-  "parent_room_location"
+  "parent_room_location",
+  "info_section",
+  "address",
+  "description"
  ],
  "fields": [
   {
@@ -35,6 +40,7 @@
    "read_only": 1
   },
   {
+   "default": "0",
    "fieldname": "is_group",
    "fieldtype": "Check",
    "label": "Is Group"
@@ -52,16 +58,40 @@
    "ignore_user_permissions": 1,
    "label": "Parent Room Location",
    "options": "Room Location"
+  },
+  {
+   "fieldname": "room_location_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Location Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "info_section",
+   "fieldtype": "Section Break",
+   "label": "Info"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Data",
+   "label": "Address"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2026-08-23 20:46:39.172411",
+ "modified": "2026-08-25 09:35:01.778229",
  "modified_by": "Administrator",
  "module": "Booking",
  "name": "Room Location",
+ "naming_rule": "By fieldname",
  "nsm_parent_field": "parent_room_location",
  "owner": "Administrator",
  "permissions": [

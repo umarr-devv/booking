@@ -1,0 +1,21 @@
+[
+ {
+  "allow_guest": 0,
+  "api_method": null,
+  "cron_format": null,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Server Script",
+  "doctype_event": "After Save (Submitted Document)",
+  "enable_rate_limit": 0,
+  "event_frequency": "All",
+  "modified": "2026-08-25 14:35:40.241765",
+  "module": "Booking",
+  "name": "Room Booking Logic",
+  "rate_limit_count": 5,
+  "rate_limit_seconds": 86400,
+  "reference_doctype": "Room Booking",
+  "script": "if doc.status == \"Check Out\" and not doc.sales_invoice:\r\n    settings = frappe.get_doc(\"Booking Settings\", \"Booking Settings\")\r\n    rate_plan = frappe.get_doc(\"Room Rate Plan\", doc.room_rate_plan)\r\n\r\n    if doc.calculation_type == \"Hourly\":\r\n        hours = frappe.utils.time_diff_in_hours(doc.check_out, doc.check_in)\r\n        qty = int(hours) + (1 if hours % 1 > 0 else 0)\r\n        rate = rate_plan.hourly_rate\r\n    else:\r\n        nights = (frappe.utils.getdate(doc.check_out) - frappe.utils.getdate(doc.check_in)).days\r\n        qty = max(nights, 1)\r\n        rate = rate_plan.daily_rate\r\n\r\n    si = frappe.new_doc(\"Sales Invoice\")\r\n    si.customer = doc.customer\r\n    si.company = doc.company\r\n    si.posting_date = frappe.utils.nowdate()\r\n    si.update_stock = 1\r\n\r\n    si.append(\"items\", {\r\n        \"item_code\": settings.accommodation_item,\r\n        \"qty\": qty,\r\n        \"rate\": rate\r\n    })\r\n\r\n    for row in doc.services:\r\n        si.append(\"items\", {\r\n            \"item_code\": row.service,\r\n            \"qty\": row.qty,\r\n            \"rate\": row.rate\r\n        })\r\n\r\n    for row in doc.items:\r\n        si.append(\"items\", {\r\n            \"item_code\": row.item,\r\n            \"qty\": row.qty,\r\n            \"rate\": row.rate,\r\n            \"warehouse\": settings.default_warehouse\r\n        })\r\n\r\n    si.set_missing_values()\r\n    si.insert(ignore_permissions=True)\r\n    si.submit()\r\n\r\n    doc.db_set(\"sales_invoice\", si.name)",
+  "script_type": "DocType Event"
+ }
+]

@@ -2,16 +2,40 @@
  "actions": [],
  "allow_bulk_edit": 1,
  "allow_rename": 1,
- "creation": "2026-08-23 20:42:04.301502",
+ "creation": "2026-08-25 11:03:36.758728",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "section_break_cwtk",
+  "customer",
+  "room",
+  "room_rate_plan",
+  "calculation_type",
+  "column_break_cqqv",
+  "company",
+  "room_type",
+  "room_location",
+  "section_break_tapa",
+  "check_in",
+  "check_out",
+  "column_break_kzov",
+  "actual_check_in",
+  "actual_check_out",
+  "items_and_services_section",
+  "services",
+  "items",
+  "total_section",
+  "rate_by_hour",
+  "rate_by_day",
+  "total_amount",
+  "column_break_wbrt",
+  "status",
+  "sales_invoice",
+  "section_break_zgmv",
   "amended_from"
  ],
  "fields": [
   {
-   "fieldname": "section_break_cwtk",
+   "fieldname": "section_break_zgmv",
    "fieldtype": "Section Break"
   },
   {
@@ -23,13 +47,175 @@
    "print_hide": 1,
    "read_only": 1,
    "search_index": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.room != null",
+   "fieldname": "room_rate_plan",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Room Rate Plan",
+   "options": "Room Rate Plan",
+   "reqd": 1
+  },
+  {
+   "fieldname": "calculation_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Calculation Type",
+   "options": "Hourly\nDaily",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_cqqv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "room",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Room",
+   "options": "Room",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "room.room_type",
+   "fieldname": "room_type",
+   "fieldtype": "Link",
+   "label": "Room Type",
+   "options": "Room Type",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "room.room_location",
+   "fieldname": "room_location",
+   "fieldtype": "Link",
+   "label": "Room Location",
+   "options": "Room Location",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_tapa",
+   "fieldtype": "Section Break",
+   "label": "Check In & Check Out"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "check_in",
+   "fieldtype": "Date",
+   "label": "Check In",
+   "read_only_depends_on": "eval:[\"Check In\", \"Check Out\", \"Completed\", \"Cancelled\"].includes(doc.status)",
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "check_out",
+   "fieldtype": "Date",
+   "label": "Check Out",
+   "read_only_depends_on": "eval:[\"Check Out\", \"Completed\", \"Cancelled\"].includes(doc.status)",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_kzov",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "actual_check_in",
+   "fieldtype": "Datetime",
+   "label": "Actual Check In"
+  },
+  {
+   "fieldname": "actual_check_out",
+   "fieldtype": "Datetime",
+   "label": "Actual Check Out"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "total_section",
+   "fieldtype": "Section Break",
+   "label": "Total"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "total_amount",
+   "fieldtype": "Currency",
+   "label": "Total Amount",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_wbrt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Status",
+   "options": "Booking\nCheck In\nCheck Out\nCompleted\nCancelled"
+  },
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "items_and_services_section",
+   "fieldtype": "Section Break",
+   "label": "Items and Services"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "services",
+   "fieldtype": "Table",
+   "label": "Services",
+   "options": "Room Booking Service",
+   "read_only_depends_on": "eval:[\"Check Out\", \"Completed\", \"Cancelled\"].includes(doc.status)"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "Items",
+   "options": "Room Booking Item",
+   "read_only_depends_on": "eval:[\"Check Out\", \"Completed\", \"Cancelled\"].includes(doc.status)"
+  },
+  {
+   "depends_on": "eval:doc.calculation_type == \"Hourly\"",
+   "fetch_from": "room_rate_plan.hourly_rate",
+   "fieldname": "rate_by_hour",
+   "fieldtype": "Currency",
+   "label": "Rate by Hour"
+  },
+  {
+   "depends_on": "eval:doc.calculation_type == \"Daily\"",
+   "fetch_from": "room_rate_plan.daily_rate",
+   "fieldname": "rate_by_day",
+   "fieldtype": "Currency",
+   "label": "Rate by Day"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-08-23 20:42:04.301502",
+ "modified": "2026-08-25 14:38:56.393011",
  "modified_by": "Administrator",
  "module": "Booking",
  "name": "Room Booking",
