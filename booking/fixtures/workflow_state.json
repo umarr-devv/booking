@@ -1,0 +1,47 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2026-08-25 15:37:05.249421",
+  "name": "Booking",
+  "style": "",
+  "workflow_state_name": "Booking"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2026-08-25 15:37:08.354058",
+  "name": "Check In",
+  "style": "",
+  "workflow_state_name": "Check In"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2026-08-25 15:37:12.910404",
+  "name": "Check Out",
+  "style": "",
+  "workflow_state_name": "Check Out"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2026-08-25 15:37:18.438487",
+  "name": "Completed",
+  "style": "",
+  "workflow_state_name": "Completed"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow State",
+  "icon": "",
+  "modified": "2026-08-25 15:37:22.910362",
+  "name": "Cancelled",
+  "style": "",
+  "workflow_state_name": "Cancelled"
+ }
+]

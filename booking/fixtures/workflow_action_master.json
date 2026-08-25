@@ -1,0 +1,23 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-08-25 15:37:32.850716",
+  "name": "Check In",
+  "workflow_action_name": "Check In"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-08-25 15:37:35.575315",
+  "name": "Complete",
+  "workflow_action_name": "Complete"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2026-08-25 15:37:39.772313",
+  "name": "Cancel",
+  "workflow_action_name": "Cancel"
+ }
+]

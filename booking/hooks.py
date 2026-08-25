@@ -25,6 +25,8 @@ fixtures = [
     {"dt": "Client Script", "filters": [["module", "=", "Booking"]]},
     {"dt": "Server Script", "filters": [["module", "=", "Booking"]]},
     {"dt": "Workflow", "filters": [["document_type", "=", "Room Booking"]]},
+    {"dt": "Workflow State", "filters": [["name", "in", ["Booking", "Check In", "Check Out", "Completed", "Cancelled"]]]},
+    {"dt": "Workflow Action Master", "filters": [["name", "in", ["Check In", "Cancel", "Check Out", "Complete"]]]},
 ]
 
 # Apps
