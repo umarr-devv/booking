@@ -2,7 +2,7 @@
  "actions": [],
  "allow_bulk_edit": 1,
  "allow_rename": 1,
- "autoname": "format:{room_type}-{room_rate_plan_name}",
+ "autoname": "format:{room_type} {room_rate_plan_name}",
  "creation": "2026-08-23 20:41:41.477763",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -15,6 +15,8 @@
   "hourly_rate",
   "column_break_oicj",
   "daily_rate",
+  "section_break_bbwl",
+  "extra_amenities",
   "info_section",
   "description"
  ],
@@ -67,18 +69,28 @@
   {
    "fieldname": "info_section",
    "fieldtype": "Section Break",
-   "label": "Info"
+   "label": "Information"
   },
   {
    "fieldname": "description",
    "fieldtype": "Small Text",
    "label": "Description"
+  },
+  {
+   "fieldname": "section_break_bbwl",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "extra_amenities",
+   "fieldtype": "Table",
+   "label": "Extra Amenities",
+   "options": "Room Type Amenities"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-08-25 11:58:23.836077",
+ "modified": "2026-08-28 10:20:15.006400",
  "modified_by": "Administrator",
  "module": "Booking",
  "name": "Room Rate Plan",
@@ -102,5 +114,6 @@
  "rows_threshold_for_grid_search": 20,
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

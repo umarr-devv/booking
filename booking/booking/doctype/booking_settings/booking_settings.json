@@ -60,7 +60,7 @@
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2026-08-25 12:30:14.862525",
+ "modified": "2026-08-28 10:21:23.496733",
  "modified_by": "Administrator",
  "module": "Booking",
  "name": "Booking Settings",
@@ -81,5 +81,6 @@
  "rows_threshold_for_grid_search": 20,
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

@@ -2,16 +2,20 @@
  "actions": [],
  "allow_bulk_edit": 1,
  "allow_rename": 1,
+ "autoname": "naming_series:naming_series",
  "creation": "2026-08-25 11:03:36.758728",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "naming_series",
+  "column_break_trtv",
+  "company",
+  "section_break_uzow",
   "customer",
   "room",
   "room_rate_plan",
   "calculation_type",
   "column_break_cqqv",
-  "company",
   "room_type",
   "room_location",
   "section_break_tapa",
@@ -23,6 +27,12 @@
   "items_and_services_section",
   "services",
   "items",
+  "infomation_section",
+  "count_of_guests",
+  "column_break_ghbf",
+  "booking_source",
+  "section_break_shzj",
+  "notes",
   "total_section",
   "rate_by_hour",
   "rate_by_day",
@@ -209,16 +219,61 @@
    "fieldname": "rate_by_day",
    "fieldtype": "Currency",
    "label": "Rate by Day"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "BOOK-.YYYY.-",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_trtv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_uzow",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "infomation_section",
+   "fieldtype": "Section Break",
+   "label": "Infomation"
+  },
+  {
+   "fieldname": "count_of_guests",
+   "fieldtype": "Int",
+   "label": "Count of Guests"
+  },
+  {
+   "fieldname": "column_break_ghbf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "booking_source",
+   "fieldtype": "Select",
+   "label": "Booking Source",
+   "options": "Walk-in\nPhone\nApp\nWebsite"
+  },
+  {
+   "fieldname": "section_break_shzj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-08-25 14:38:56.393011",
+ "modified": "2026-08-28 10:20:51.586740",
  "modified_by": "Administrator",
  "module": "Booking",
  "name": "Room Booking",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
@@ -239,5 +294,6 @@
  "rows_threshold_for_grid_search": 20,
  "sort_field": "creation",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }

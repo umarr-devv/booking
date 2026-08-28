@@ -2,82 +2,66 @@
  "actions": [],
  "allow_bulk_edit": 1,
  "allow_rename": 1,
- "autoname": "field:room_number",
- "creation": "2026-08-23 20:41:52.902717",
+ "autoname": "field:amenities_name",
+ "creation": "2026-08-28 10:11:14.348153",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "room_number",
-  "room_type",
-  "enabled",
-  "column_break_yyoc",
-  "room_location",
-  "section_break_ryti",
-  "remarks",
-  "info_section",
+  "amenities_name",
+  "description",
+  "column_break_hekr",
+  "icon",
+  "color",
+  "section_break_byln",
   "image"
  ],
  "fields": [
   {
-   "fieldname": "room_number",
+   "fieldname": "amenities_name",
    "fieldtype": "Data",
    "in_list_view": 1,
-   "label": "Room Number",
+   "label": "Amenities Name",
    "reqd": 1,
    "unique": 1
   },
   {
-   "default": "1",
-   "fieldname": "enabled",
-   "fieldtype": "Check",
-   "label": "enabled"
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
   },
   {
-   "fieldname": "column_break_yyoc",
+   "fieldname": "column_break_hekr",
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "room_type",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Room Type",
-   "options": "Room Type",
-   "reqd": 1
+   "fieldname": "icon",
+   "fieldtype": "Icon",
+   "label": "Icon"
   },
   {
-   "fieldname": "info_section",
+   "fieldname": "color",
+   "fieldtype": "Color",
+   "label": "Color"
+  },
+  {
+   "fieldname": "section_break_byln",
    "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "room_location",
-   "fieldtype": "Link",
-   "label": "Room Location",
-   "options": "Room Location"
   },
   {
    "fieldname": "image",
    "fieldtype": "Attach Image",
    "hidden": 1,
    "label": "image"
-  },
-  {
-   "fieldname": "section_break_ryti",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "remarks",
-   "fieldtype": "Small Text",
-   "label": "Remarks"
   }
  ],
  "grid_page_length": 50,
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-08-28 10:21:02.931601",
+ "modified": "2026-08-28 10:20:38.206653",
  "modified_by": "Administrator",
  "module": "Booking",
- "name": "Room",
+ "name": "Room Amenities",
  "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
